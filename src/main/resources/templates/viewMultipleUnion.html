@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Business Calendar</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+		<h1>Business Calendar</h1>
+		<hr>
+		<h2>DETAIL VIEW</h2>
+
+<table style="border: groove;width: 50%" class="table table-striped table-reponsive-md" >
+<tr>
+<td rowspan="2"></td>
+<td colspan="4" th:each="uni: ${listUnion}" th:text="${uni.name}"></td>
+</tr>
+<tr>
+<span th:each="dd: ${listUnion}">
+<td colspan="2">Selection Date</td>
+<td colspan="2">Payment Date</td>
+</span>
+</tr>
+
+<tr th:each="sap : ${result}">
+<th th:rowspan="1" th:text="${sap.key}"></th>
+<th th:each="eUni : ${sap.value}" colspan="4">
+
+<table>
+<tr th:each="date : ${eUni.value}">
+<th th:text="${date.selectionDate}"></th>
+<th th:text="${date.paymentDate}"></th>
+</tr>
+</table>
+</th>
+
+</tr>
+
+
+
+		<!-- 	<tr>
+				<th></th>
+				<th th:each="unionName:${reuslt.value.key}">
+					<table class="table">
+						<tr style="text-align: center;">
+							<th th:colspan="2" th:utext="${unionName}"></th>
+						</tr>
+						<tr style="text-align: center;">
+							<th>Selection Date</th>
+							<th>Payment Date</th>
+						</tr>
+					</table>
+				</th>
+			</tr>
+	
+			<tr th:each="listShow:${listShow}">
+				<th style="vertical-align: middle;text-align: center;" th:utext="${result.key}"></th>
+				<td th:each="showListPayment:${result.value.value}">
+					<table class="table">
+						<tr th:each="payment:${showListPayment}">
+							<td >
+								<table class="table">
+									<tr style="text-align: center;">
+										<td th:text="${payment.selectionDate}"></td>
+										<td th:text="${payment.paymentDate}"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr> -->
+		</table>
+		
+		
+-->
+
+		<a th:href="@{/}"> Back  to Event List</a>
+
+	</div>
+	
+	
+
+               
+	
+
+</body>
+</html>

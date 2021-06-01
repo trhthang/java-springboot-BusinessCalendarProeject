@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Business Calendar</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Business Calendar</h1>
+		<hr>
+		<h2>DETAIL VIEW</h2>
+
+
+		<div >
+			<table border="1" class="table table-bordered" th:object=" ${event} ">
+				<tr>
+					<th rowspan="2">Month</th>
+					<th colspan="2" th:text="${union}"></th>
+				</tr>
+				<tr>
+					<th>Selection day</th>
+					<th>Payment day</th>
+				</tr>
+   				
+   					<span th:each="sap : ${SAPDate}">
+   					<th th:rowspan="${sap.value.size + 1}" th:text="${sap.key}"></th>
+   					<tr th:each="dd: ${sap.value}">
+					<td th:text="${dd.selectionDate}"></td>
+					<td th:text="${dd.paymentDate}"></td>
+				</tr>
+				
+				</span>
+
+			</table>
+		</div>
+
+
+		<a th:href="@{/}"> Back  to Event List</a>
+
+	</div>
+	
+	
+
+               
+	
+
+</body>
+</html>

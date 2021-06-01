@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Business Calendar</h1>
+		<hr>
+		<h2>ADD NEW EVENT</h2>
+
+		<form  th:action="@{/saveEvent}" th:object = "${recurentEvent}"
+			method="POST">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Start Date</label> <input
+					type="date" th:field="*{start_date}"
+					class="form-control mb-4 col-4">
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">End Date</label> <input
+					type="date" th:field="*{end_date}"
+					class="form-control mb-4 col-4">
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Name</label><input
+					type="text" th:field="*{name}"  class="form-control mb-4 col-4">
+			</div>
+
+			<div class="form-group row">
+				<label for="union" class="col-sm-2 col-form-label">Union</label> <select
+					id="cars" name="union" class="form-control mb-4 col-4" th:field="*{union_id}" >
+					<option th:value="1" >Volvo</option>
+					<option th:value="2" >Saab</option>
+					<option th:value="3" >Opel</option>
+					<option th:value="4" >Audi</option>
+				</select>
+			</div>
+			
+			<div class="form-group row">
+				<label for="preparation_days" class="col-sm-2 col-form-label">Preparation days</label> <input
+					type="text" th:field="*{preparation_days}"  id="payment-date" name="preparation_days" min="1" max="31" class="form-control mb-4 col-4">
+			</div>
+			
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Payment day</label> <input
+					type="text" th:field="*{pattern}"
+					class="form-control mb-4 col-4">
+			</div>
+			
+			
+
+			<div class="form-group row">
+				<label for="shift-mode" class="col-sm-2 col-form-label">Shift Mode</label> <select
+					id="shift-mode" name="shift-mode" class="form-control mb-4 col-4" th:field="*{shift_mode}">
+					<option th:value="shift-calendar-date">Shift calendar date</option>
+					<option th:value="shift-and-skip-holiday">Shift and skip holiday</option>
+					<option th:value="shift-and-skip-holiday-weekend">Shift and skip holiday and weekend</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-info col-2">Create</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/}"> Back to Event List</a>
+
+	</div>
+
+</body>
+</html>
